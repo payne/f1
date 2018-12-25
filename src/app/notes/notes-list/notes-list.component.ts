@@ -8,19 +8,18 @@ import { Observable } from 'rxjs';
   styleUrls: ['./notes-list.component.scss']
 })
 export class NotesListComponent implements OnInit {
-
   notes: Observable<any[]>;
+  title: string;
   content: string;
 
-  constructor(private notesService: NotesService) { }
+  constructor(private notesService: NotesService) {}
 
   ngOnInit() {
     this.notes = this.notesService.getData();
   }
 
   clickHandler() {
-    this.notesService.createNote(this.content);
+    this.notesService.createNote(this.title, this.content);
     this.content = '';
   }
-
 }

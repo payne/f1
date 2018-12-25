@@ -1,17 +1,33 @@
 <h1>Firestore Notes</h1>
 <p>
-    Learn how to build
-    <a href="https://angularfirebase.com/tag/firestore">cool stuff with Firestore</a>
+  Learn how to build
+  <a href="https://angularfirebase.com/tag/firestore"
+    >cool stuff with Firestore</a
+  >
 </p>
-<hr>
+<hr />
 
-<input [(ngModel)]="content" placeholder="Add your own note" class="input" name="note">
+<input
+  [(ngModel)]="title"
+  placeholder="Note title"
+  class="input"
+  name="title"
+/>
+<input
+  [(ngModel)]="content"
+  placeholder="Add your own note"
+  class="input"
+  name="note"
+/>
 
-
-<button class="button is-success" (click)="clickHandler()" [disabled]="content?.length < 2 || content?.length > 200">
+<button
+  class="button is-success"
+  (click)="clickHandler()"
+  [disabled]="content?.length < 2 || content?.length > 200"
+>
   Add Note
 </button>
-<hr>
-<div *ngFor="let note of notes | async">
-    <note-detail [note]="note"></note-detail>
+<hr />
+<div *ngFor="let note of (notes | async)">
+  <note-detail [note]="note"></note-detail>
 </div>
